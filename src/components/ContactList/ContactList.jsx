@@ -5,10 +5,12 @@ import { selectContacts } from "../../redux/contactsSlice";
 import { selectNameFilter } from "../../redux/filtersSlice";
 
 const getVisibleContacts = (filterValue, contacts) => {
-  const loweredCaseFilterValue = filterValue.toLowerCase();
   if (filterValue === "") {
+    console.log("trueeeee");
     return contacts;
   } else {
+    console.log(filterValue);
+    const loweredCaseFilterValue = filterValue.toLowerCase();
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(loweredCaseFilterValue)
     );

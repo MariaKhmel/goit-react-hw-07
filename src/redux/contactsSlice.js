@@ -4,12 +4,16 @@ import initialContacts from "../contacts.json";
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState: {
-        items: initialContacts
+        contacts: {
+            items: [],
+            loading: false,
+            error: null
+        }
     },
     reducers: {
         addContact: {
             reducer(state, action) {
-                state.items.push(action.payload)
+                state.contacts.items.push(action.payload)
             },
             prepare({ name, number }) {
                 return {
@@ -23,11 +27,11 @@ const contactsSlice = createSlice({
             }
         },
         deleteContact(state, action) {
-            state.items = state.items.filter(item => item.id !== action.payload)
+            state.contacts.items = state.items.filter(item => item.id !== action.payload)
         }
 
     }
 })
-export const selectContacts = (state) => state.contacts.items;
+export const selectContacts = (state) => state.contacts.contacts.items;
 export const contactsReducer = contactsSlice.reducer;
 export const { addContact, deleteContact } = contactsSlice.actions;
