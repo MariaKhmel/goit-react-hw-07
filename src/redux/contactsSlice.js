@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addContact, deleteContact, fetchContacts } from "./contactsOps";
 
-
 const onFetchPending = (state) => {
     state.loading = true;
 }
@@ -45,8 +44,6 @@ const contactsSlice = createSlice({
 
     }
 })
-
-console.log(contactsSlice.actions)
 
 export const contactsReducer = contactsSlice.reducer;
 

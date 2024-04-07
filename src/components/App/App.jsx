@@ -22,8 +22,7 @@ function App() {
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {isLoading ? <Spinner /> : <ContactList />}
-      {isError ? <ErrorMessage /> : <ContactList />}
+      {isLoading ? <Spinner /> : isError ? <ErrorMessage /> : <ContactList />}
     </div>
   );
 }
