@@ -1,15 +1,12 @@
 import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
-import { selectContacts } from "../../redux/contactsSlice";
-import { selectNameFilter } from "../../redux/filtersSlice";
+import { selectContacts, selectNameFilter } from "../../redux/selectors";
 
 const getVisibleContacts = (filterValue, contacts) => {
   if (filterValue === "") {
-    console.log("trueeeee");
     return contacts;
   } else {
-    console.log(filterValue);
     const loweredCaseFilterValue = filterValue.toLowerCase();
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(loweredCaseFilterValue)
