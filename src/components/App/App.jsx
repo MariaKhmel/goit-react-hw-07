@@ -6,14 +6,13 @@ import Spinner from "../Spinner/Spinner";
 import css from "./App.module.css";
 import { fetchContacts } from "../../redux/contactsOps";
 import { useEffect } from "react";
-import { selectError, selectIsLoading } from "../../redux/selectors";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { selectIsLoading } from "../../redux/selectors";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectError);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -24,7 +23,7 @@ function App() {
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {isLoading ? <Spinner /> : isError ? <ErrorMessage /> : <ContactList />}
+      {isLoading ? <Spinner /> : <ContactList />}
     </div>
   );
 }
